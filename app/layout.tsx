@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Admission Path4U - Education Consultancy CRM',
   description: 'Manage leads, students, finance and HR for Admission Path4U consultancy',
+  icons: {
+    icon: '/brand-logo.png',
+  },
 }
 
 export const viewport: Viewport = {
