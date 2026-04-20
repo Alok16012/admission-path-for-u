@@ -288,11 +288,9 @@ export const InvoicePDF = ({ student, payments, logoBase64 }: InvoiceProps) => {
               {logoBase64 ? (
                 <Image src={logoBase64} style={styles.logo} />
               ) : null}
-              <Text style={styles.companyName}>DISTANCE COURSES WALA</Text>
-              <Text style={styles.companyDetail}>K-212, Near SBI ATM, Kankarbagh</Text>
-              <Text style={styles.companyDetail}>Hanuman Nagar, Patna, Bihar – 800020</Text>
-              <Text style={styles.companyDetail}>Ph: 099395 87009</Text>
-              <Text style={styles.companyDetail}>Email: info@distancecourseswala.in</Text>
+              <Text style={styles.companyName}>ADMISSION PATH4U</Text>
+              <Text style={styles.companyDetail}>Patna, Bihar</Text>
+              <Text style={styles.companyDetail}>Email: info@admissionpath4u.com</Text>
             </View>
             <View style={styles.invoiceBlock}>
               <View style={styles.invoiceBadge}>
@@ -421,8 +419,8 @@ export const InvoicePDF = ({ student, payments, logoBase64 }: InvoiceProps) => {
           <View style={styles.footer}>
             <View>
               <Text style={styles.footerLeft}>This is a computer-generated invoice and is valid without a physical signature.</Text>
-              <Text style={styles.footerLeft}>For queries: 099395 87009 | info@distancecourseswala.in</Text>
-              <Text style={[styles.footerLeft, { marginTop: 4, color: ACCENT }]}>Thank you for choosing Distance Courses Wala!</Text>
+              <Text style={styles.footerLeft}>For queries: info@admissionpath4u.com</Text>
+              <Text style={[styles.footerLeft, { marginTop: 4, color: ACCENT }]}>Thank you for choosing Admission Path4U!</Text>
             </View>
             <View style={styles.footerRight}>
               <View style={styles.signatureLine} />

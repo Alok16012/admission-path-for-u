@@ -79,7 +79,7 @@ export interface LeadFilters {
   followup_to?: string
   payment_status?: 'paid' | 'partial' | 'unpaid'
   import_batch_id?: string
-  mode?: 'attending' | 'non-attending' | 'regular' | 'distance' | 'online'
+  mode?: 'attending' | 'non-attending' | 'regular' | 'online'
 }
 
 export interface Profile {
@@ -150,7 +150,7 @@ export interface Lead {
   amount_paid?: number
   converted_at?: string
   created_by?: string
-  mode?: 'attending' | 'non-attending' | 'regular' | 'distance' | 'online'
+  mode?: 'attending' | 'non-attending' | 'regular' | 'online'
   enrollment_date?: string
   metadata?: Record<string, any>
   created_at: string
@@ -209,7 +209,7 @@ export interface Student {
   amount_paid?: number
   incentive_amount?: number
   enrollment_date?: string
-  mode?: 'attending' | 'non-attending' | 'regular' | 'distance' | 'online'
+  mode?: 'attending' | 'non-attending' | 'regular' | 'online'
   department_id?: string
   sub_section_id?: string
   session_id?: string

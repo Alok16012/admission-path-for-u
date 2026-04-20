@@ -19,7 +19,7 @@ export const leadSchema = z.object({
   notes: z.string().optional(),
   total_fee: z.number().positive().optional(),
   amount_paid: z.number().min(0).optional(),
-  mode: z.enum(['attending', 'non-attending', 'regular', 'distance', 'online']).optional().or(z.literal('')),
+  mode: z.enum(['attending', 'non-attending', 'regular', 'online']).optional().or(z.literal('')),
   enrollment_date: z.string().optional(),
 })
 
