@@ -19,21 +19,20 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { label: 'Dashboard', href: '/dashboard', icon: Home, roles: ['admin', 'lead', 'backend'] },
-  { label: 'Leads', href: '/leads', icon: Users, roles: ['admin', 'lead', 'backend'] },
-  { label: 'Students', href: '/backend', icon: GraduationCap, roles: ['admin', 'backend'] },
-  { label: 'Finance', href: '/finance', icon: DollarSign, roles: ['admin', 'backend'] },
-  { label: 'HRMS', href: '/hrms', icon: UserCheck, roles: ['admin', 'backend'] },
-  { label: 'Attendance', href: '/attendance', icon: ClockIcon, roles: ['admin', 'backend'] },
-  { label: 'Departments', href: '/settings/departments', icon: Building2, roles: ['admin'] },
-  { label: 'Courses', href: '/settings/courses', icon: BookOpen, roles: ['admin'] },
-  { label: 'Sessions', href: '/settings/sessions', icon: ListTree, roles: ['admin'] },
-  { label: 'Litigation', href: '/litigation', icon: Scale, roles: ['admin'] },
-  { label: 'Analytics', href: '/analytics', icon: BarChart3, roles: ['admin', 'backend'] },
-  { label: 'Settings', href: '/settings/users', icon: Settings, roles: ['admin'] },
-  // Lead specific items kept at the end
-  { label: 'Incentive', href: '/incentive', icon: Gift, roles: ['lead'] },
-  { label: 'Performance', href: '/performance', icon: TrendingUp, roles: ['lead'] },
+  { label: 'Dashboard',   href: '/dashboard',           icon: Home,       roles: ['admin', 'lead', 'backend'] },
+  { label: 'Leads',       href: '/leads',               icon: Users,      roles: ['admin', 'lead', 'backend'] },
+  { label: 'Students',    href: '/backend',             icon: GraduationCap, roles: ['admin', 'backend'] },
+  { label: 'Finance',     href: '/finance',             icon: DollarSign, roles: ['admin', 'backend'] },
+  { label: 'HRMS',        href: '/hrms',                icon: UserCheck,  roles: ['admin', 'backend'] },
+  { label: 'Attendance',  href: '/attendance',          icon: ClockIcon,  roles: ['admin', 'backend'] },
+  { label: 'Departments', href: '/settings/departments',icon: Building2,  roles: ['admin'] },
+  { label: 'Courses',     href: '/settings/courses',    icon: BookOpen,   roles: ['admin'] },
+  { label: 'Sessions',    href: '/settings/sessions',   icon: ListTree,   roles: ['admin'] },
+  { label: 'Litigation',  href: '/litigation',          icon: Scale,      roles: ['admin'] },
+  { label: 'Analytics',   href: '/analytics',           icon: BarChart3,  roles: ['admin', 'backend'] },
+  { label: 'Settings',    href: '/settings/users',      icon: Settings,   roles: ['admin'] },
+  { label: 'Incentive',   href: '/incentive',           icon: Gift,       roles: ['lead'] },
+  { label: 'Performance', href: '/performance',         icon: TrendingUp, roles: ['lead'] },
 ]
 
 interface SidebarProps {
@@ -59,8 +58,8 @@ export function Sidebar({ role }: SidebarProps) {
               className={cn(
                 'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
                 isActive
-                  ? 'bg-blue-600 text-white'
-                  : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                  ? 'bg-[#c4952a] text-white shadow-sm'
+                  : 'text-blue-100 hover:bg-[#1e3a5f] hover:text-white'
               )}
               title={collapsed ? item.label : undefined}
             >
@@ -75,26 +74,27 @@ export function Sidebar({ role }: SidebarProps) {
 
   return (
     <>
-      {/* Desktop sidebar — hidden on mobile */}
+      {/* Desktop sidebar */}
       <div
         className={cn(
-          'hidden md:flex flex-col h-full bg-gray-900 text-white transition-all duration-300 flex-shrink-0',
+          'hidden md:flex flex-col h-full text-white transition-all duration-300 flex-shrink-0',
+          'bg-[#162d4a]',
           sidebarCollapsed ? 'w-16' : 'w-60'
         )}
       >
-        <div className="flex items-center justify-between p-4 border-b border-gray-700">
+        <div className="flex items-center justify-between p-4 border-b border-[#1e3a5f]">
           {!sidebarCollapsed && (
             <div className="flex items-center gap-3">
-              <img src="/brand-logo.png" alt="Distance Courses Wala" className="w-10 h-10 rounded" />
+              <img src="/brand-logo.png" alt="Admission Path4U" className="w-10 h-10 rounded object-contain bg-white p-0.5" />
               <div className="flex flex-col justify-center">
-                <span className="font-bold text-xs leading-tight">Distance Courses</span>
-                <span className="text-[10px] text-blue-400 font-bold leading-tight uppercase tracking-wider mt-0.5">Wala</span>
+                <span className="font-bold text-xs leading-tight">Admission</span>
+                <span className="text-[10px] text-[#c4952a] font-bold leading-tight uppercase tracking-wider mt-0.5">Path4U</span>
               </div>
             </div>
           )}
           <button
             onClick={toggleSidebar}
-            className="p-1 rounded hover:bg-gray-700 transition-colors ml-auto"
+            className="p-1 rounded hover:bg-[#1e3a5f] transition-colors ml-auto"
           >
             {sidebarCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
           </button>
@@ -102,34 +102,32 @@ export function Sidebar({ role }: SidebarProps) {
         <NavLinks collapsed={sidebarCollapsed} />
       </div>
 
-      {/* Mobile drawer overlay */}
+      {/* Mobile drawer */}
       {mobileSidebarOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
-          {/* Backdrop */}
           <div
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setMobileSidebarOpen(false)}
           />
-          {/* Drawer panel */}
-          <div className="absolute left-0 top-0 h-full w-72 flex flex-col bg-gray-900 text-white shadow-2xl">
-            <div className="flex items-center justify-between p-4 border-b border-gray-700">
+          <div className="absolute left-0 top-0 h-full w-72 flex flex-col bg-[#162d4a] text-white shadow-2xl">
+            <div className="flex items-center justify-between p-4 border-b border-[#1e3a5f]">
               <div className="flex items-center gap-3">
-                <img src="/brand-logo.png" alt="Distance Courses Wala" className="w-9 h-9 rounded" />
+                <img src="/brand-logo.png" alt="Admission Path4U" className="w-9 h-9 rounded object-contain bg-white p-0.5" />
                 <div className="flex flex-col justify-center">
-                  <span className="font-bold text-sm leading-tight">Distance Courses</span>
-                  <span className="text-[10px] text-blue-400 font-bold leading-tight uppercase tracking-wider mt-0.5">Wala</span>
+                  <span className="font-bold text-sm leading-tight">Admission</span>
+                  <span className="text-[10px] text-[#c4952a] font-bold leading-tight uppercase tracking-wider mt-0.5">Path4U</span>
                 </div>
               </div>
               <button
                 onClick={() => setMobileSidebarOpen(false)}
-                className="p-1.5 rounded hover:bg-gray-700 transition-colors"
+                className="p-1.5 rounded hover:bg-[#1e3a5f] transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
             <NavLinks onNavClick={() => setMobileSidebarOpen(false)} />
-            <div className="p-4 border-t border-gray-700 text-center text-xs text-gray-500">
-              Developed by <span className="text-blue-400 font-semibold">Blinks AI</span>
+            <div className="p-4 border-t border-[#1e3a5f] text-center text-xs text-blue-300">
+              Developed by <span className="text-[#c4952a] font-semibold">Blinks AI</span>
             </div>
           </div>
         </div>
