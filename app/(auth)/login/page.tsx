@@ -9,7 +9,6 @@ import { Label } from '@/components/ui/label'
 import { Card } from '@/components/ui/card'
 import { createClient } from '@/lib/supabase/client'
 import { toast } from 'sonner'
-import Image from 'next/image'
 
 const loginSchema = z.object({
   email: z.string().email('Valid email required'),
@@ -55,8 +54,7 @@ export default function LoginPage() {
 
           <div className="relative z-10 flex flex-col h-full">
             <div className="flex items-center gap-4 mb-12">
-              <Image src="/brand-logo.png" alt="Admission Path4U Logo" width={64} height={64} className="w-16 h-16 object-contain" priority />
-              <h1 className="text-3xl font-bold tracking-tight">Admission Path4U</h1>
+              <h1 className="text-3xl font-bold tracking-tight">Minan Ventures</h1>
             </div>
 
             <div className="flex-grow flex flex-col justify-center">
@@ -71,15 +69,15 @@ export default function LoginPage() {
 
           <div className="relative z-10 mt-12 bg-white/10 p-6 rounded-2xl backdrop-blur-md border border-white/20 shadow-lg">
             <p className="italic text-blue-50 text-sm">
-              "Admission Path4U has transformed how we handle our student management. Highly recommended platform!"
+              "Minan Ventures has transformed how we handle our student management. Highly recommended platform!"
             </p>
             <div className="mt-4 flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-tr from-blue-400 to-blue-300 rounded-full flex items-center justify-center font-bold text-white shadow-sm border border-white/10">
-                SR
+                NK
               </div>
               <div>
-                <p className="font-semibold text-sm">Sarah Richards</p>
-                <p className="text-blue-200 text-xs text-opacity-90">Director of Admissions</p>
+                <p className="font-semibold text-sm">Nithish Kumar</p>
+                <p className="text-blue-200 text-xs text-opacity-90">Founder, Minan Ventures</p>
               </div>
             </div>
           </div>
@@ -93,8 +91,7 @@ export default function LoginPage() {
         <div className="w-full md:w-7/12 p-8 md:p-16 bg-white flex flex-col justify-center relative">
           {/* Mobile Header (Hidden on Desktop) */}
           <div className="flex md:hidden items-center gap-3 mb-8 justify-center">
-            <Image src="/brand-logo.png" alt="Admission Path4U Logo" width={48} height={48} className="w-12 h-12 object-contain" />
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900">Admission Path4U</h1>
+            <h1 className="text-2xl font-bold tracking-tight text-gray-900">Minan Ventures</h1>
           </div>
 
           <div className="max-w-md w-full mx-auto space-y-8">
