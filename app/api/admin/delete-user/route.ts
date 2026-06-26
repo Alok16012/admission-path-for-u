@@ -29,12 +29,23 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'User ID is required' }, { status: 400 })
         }
 
-        // Initialize admin client to delete the user
+        // Initialize admin client (bypasses RLS)
         const supabaseAdmin = createClient(
             process.env.NEXT_PUBLIC_SUPABASE_URL!,
             process.env.SUPABASE_SERVICE_ROLE_KEY!
         )
 
+        // Step 1: Delete profile first (cascades to related tables)
+        const { error: profileError } = await supabaseAdmin
+            .from('profiles')
+            .delete()
+            .eq('id', userId)
+
+        if (profileError) {
+            throw profileError
+        }
+
+        // Step 2: Delete auth user
         const { error: deleteError } = await supabaseAdmin.auth.admin.deleteUser(userId)
 
         if (deleteError) {
