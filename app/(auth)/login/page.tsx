@@ -1,5 +1,6 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -17,7 +18,17 @@ const loginSchema = z.object({
 
 type LoginFormData = z.infer<typeof loginSchema>
 
-export default function LoginPage() {
+function InactiveErrorToast() {
+  const searchParams = useSearchParams()
+  useEffect(() => {
+    if (searchParams.get('error') === 'account_inactive') {
+      toast.error('Your account has been deactivated. Please contact admin.')
+    }
+  }, [searchParams])
+  return null
+}
+
+function LoginForm() {
   const [loading, setLoading] = useState(false)
   const supabase = createClient()
 
@@ -44,9 +55,67 @@ export default function LoginPage() {
     }
   }
 
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+      <div className="space-y-2">
+        <Label htmlFor="email" className="text-sm font-medium text-gray-700">Email Address</Label>
+        <Input
+          id="email"
+          type="email"
+          placeholder="name@company.com"
+          className="rounded-xl h-11 border-gray-300 focus:border-blue-500 focus:ring-blue-500 transition-shadow"
+          {...register('email')}
+          autoComplete="email"
+        />
+        {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email.message}</p>}
+      </div>
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <Label htmlFor="password" className="text-sm font-medium text-gray-700">Password</Label>
+          <a href="#" className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
+            Forgot password?
+          </a>
+        </div>
+        <Input
+          id="password"
+          type="password"
+          placeholder="••••••••"
+          className="rounded-xl h-11 border-gray-300 focus:border-blue-500 focus:ring-blue-500 transition-shadow"
+          {...register('password')}
+          autoComplete="current-password"
+        />
+        {errors.password && <p className="text-xs text-red-500 mt-1">{errors.password.message}</p>}
+      </div>
 
+      <div className="flex items-center">
+        <input
+          id="remember-me"
+          name="remember-me"
+          type="checkbox"
+          className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded cursor-pointer transition-colors"
+        />
+        <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700 cursor-pointer">
+          Remember me for 30 days
+        </label>
+      </div>
+
+      <Button type="submit" className="w-full rounded-xl h-11 shadow-md bg-gray-900 hover:bg-black text-white transition-all font-semibold" disabled={loading}>
+        {loading ? (
+          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+        ) : (
+          'Sign in'
+        )}
+      </Button>
+    </form>
+  )
+}
+
+export default function LoginPage() {
   return (
     <Card className="w-full max-w-5xl shadow-2xl overflow-hidden border-none mx-4">
+      <Suspense fallback={null}>
+        <InactiveErrorToast />
+      </Suspense>
       <div className="flex flex-col md:flex-row min-h-[600px]">
         {/* Left Side - Brand & Visuals */}
         <div className="w-full md:w-5/12 bg-blue-600 p-12 text-white flex flex-col justify-between relative overflow-hidden hidden md:flex">
@@ -100,58 +169,7 @@ export default function LoginPage() {
               <p className="text-gray-500 mt-2 text-sm">Please enter your details to sign in.</p>
             </div>
 
-
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm font-medium text-gray-700">Email Address</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="name@company.com"
-                  className="rounded-xl h-11 border-gray-300 focus:border-blue-500 focus:ring-blue-500 transition-shadow"
-                  {...register('email')}
-                  autoComplete="email"
-                />
-                {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email.message}</p>}
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="password" className="text-sm font-medium text-gray-700">Password</Label>
-                  <a href="#" className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
-                    Forgot password?
-                  </a>
-                </div>
-                <Input
-                  id="password"
-                  type="password"
-                  placeholder="••••••••"
-                  className="rounded-xl h-11 border-gray-300 focus:border-blue-500 focus:ring-blue-500 transition-shadow"
-                  {...register('password')}
-                  autoComplete="current-password"
-                />
-                {errors.password && <p className="text-xs text-red-500 mt-1">{errors.password.message}</p>}
-              </div>
-
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded cursor-pointer transition-colors"
-                />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700 cursor-pointer">
-                  Remember me for 30 days
-                </label>
-              </div>
-
-              <Button type="submit" className="w-full rounded-xl h-11 shadow-md bg-gray-900 hover:bg-black text-white transition-all font-semibold" disabled={loading}>
-                {loading ? (
-                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                ) : (
-                  'Sign in'
-                )}
-              </Button>
-            </form>
+            <LoginForm />
 
             <p className="text-center text-sm text-gray-500 mt-8">
               Developed by{' '}

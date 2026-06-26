@@ -1,11 +1,16 @@
 import { createServerClient } from '@/lib/supabase/server'
 import { Sidebar } from '@/components/shared/Sidebar'
 import { Topbar } from '@/components/shared/Topbar'
+import { redirect } from 'next/navigation'
 import type { UserRole, Profile } from '@/types/app.types'
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createServerClient()
   const { data: { user } } = await supabase.auth.getUser()
+
+  if (!user) {
+    redirect('/login')
+  }
 
   let userProfile: Profile = {
     id: '',
@@ -24,6 +29,11 @@ export default async function DashboardLayout({ children }: { children: React.Re
       .single() as { data: { id: string; email: string; full_name: string; role: string; phone: string | null; is_active: boolean; created_at: string } | null }
 
     if (profile) {
+      if (!profile.is_active) {
+        await supabase.auth.signOut()
+        redirect('/login?error=account_inactive')
+      }
+
       userProfile = {
         id: profile.id,
         email: profile.email,
