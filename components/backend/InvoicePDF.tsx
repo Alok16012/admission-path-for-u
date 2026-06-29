@@ -289,7 +289,8 @@ export const InvoicePDF = ({ student, payments, logoBase64 }: InvoiceProps) => {
                 <Image src={logoBase64} style={styles.logo} />
               ) : null}
               <Text style={styles.companyName}>ADMISSION PATH4U</Text>
-              <Text style={styles.companyDetail}>Patna, Bihar</Text>
+              <Text style={styles.companyDetail}>GF-090, Migsun Galleria, Sector 27</Text>
+              <Text style={styles.companyDetail}>Greater Noida, Uttar Pradesh - 201306</Text>
               <Text style={styles.companyDetail}>Email: info@admissionpath4u.com</Text>
             </View>
             <View style={styles.invoiceBlock}>
