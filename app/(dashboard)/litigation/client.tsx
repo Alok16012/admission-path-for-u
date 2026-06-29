@@ -158,6 +158,7 @@ function downloadReceipt(payment: LitigationPayment, litigation: Litigation) {
 <meta charset="utf-8" />
 <title>Payment Receipt</title>
 <style>
+  @page { size: A4; margin: 0; }
   body { font-family: Arial, sans-serif; padding: 40px; color: #111; }
   .header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 16px; margin-bottom: 24px; }
   .header h1 { margin: 0; font-size: 22px; }
@@ -168,7 +169,7 @@ function downloadReceipt(payment: LitigationPayment, litigation: Litigation) {
   td:first-child { font-weight: bold; background: #f9f9f9; width: 40%; }
   .total { font-size: 18px; font-weight: bold; }
   .footer { margin-top: 40px; text-align: center; font-size: 12px; color: #888; border-top: 1px solid #eee; padding-top: 16px; }
-  @media print { button { display: none; } }
+  @media print { button { display: none; } body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 </style>
 </head>
 <body>

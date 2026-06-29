@@ -25,6 +25,7 @@ interface FeeTrackerProps {
 function printReceipt(student: Student, p: Payment & { recorder?: { full_name: string } }) {
   const html = `<!DOCTYPE html><html><head><title>Payment Receipt</title>
   <style>
+    @page { size: A4; margin: 0; }
     body { font-family: Arial, sans-serif; padding: 40px; max-width: 600px; margin: auto; }
     h2 { text-align: center; margin-bottom: 4px; }
     .subtitle { text-align: center; color: #555; margin-bottom: 24px; font-size: 13px; }
@@ -32,7 +33,7 @@ function printReceipt(student: Student, p: Payment & { recorder?: { full_name: s
     td { padding: 8px 12px; border: 1px solid #ddd; font-size: 14px; }
     td:first-child { font-weight: bold; background: #f9f9f9; width: 40%; }
     .footer { margin-top: 40px; text-align: right; font-size: 12px; color: #888; }
-    @media print { body { padding: 20px; } }
+    @media print { body { padding: 40px; -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
   </style></head><body>
   <h2>Payment Receipt</h2>
   <p class="subtitle">Receipt No: ${p.receipt_number ?? 'N/A'}</p>
