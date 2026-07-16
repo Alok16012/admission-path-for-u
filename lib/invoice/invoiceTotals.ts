@@ -5,7 +5,7 @@ import type {
   AirfareItem,
   ServiceItem,
   DiscountItem,
-} from '@/app/page';
+} from '@/app/invoice/page';
 
 export interface InvoiceTotals {
   totalCGST: number;
