@@ -1,0 +1,50 @@
+/* Invoice-app specific styles, scoped so they don't leak into the CRM */
+
+@media print {
+  /* Matches the CRM's own print setup (litigation/FeeTracker also use A4 margin 0) */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  /* Guarded by :has(#invoice-preview) so CRM receipt printing keeps working */
+  body:has(#invoice-preview) {
+    background: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body:has(#invoice-preview) .no-print {
+    display: none !important;
+  }
+
+  body:has(#invoice-preview) * {
+    visibility: hidden;
+  }
+
+  body:has(#invoice-preview) #invoice-preview,
+  body:has(#invoice-preview) #invoice-preview * {
+    visibility: visible;
+  }
+
+  body:has(#invoice-preview) #invoice-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 210mm !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    padding: 12mm !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+}
+
+.invoice-app input[type='number']::-webkit-outer-spin-button,
+.invoice-app input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.invoice-app input[type='number'] {
+  -moz-appearance: textfield;
+}
