@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 490" width="540" height="490">
+
+  <!-- ═══════════════════════════
+       Explore My Trip — Logo
+       Color: #5BBDE0
+       ═══════════════════════════ -->
+
+  <!-- ── CLOUDS ── -->
+  <!-- Left cloud -->
+  <g fill="#5BBDE0">
+    <ellipse cx="208" cy="64" rx="28" ry="17"/>
+    <ellipse cx="228" cy="53" rx="22" ry="17"/>
+    <ellipse cx="190" cy="60" rx="19" ry="14"/>
+    <ellipse cx="216" cy="50" rx="17" ry="13"/>
+  </g>
+
+  <!-- Right cloud -->
+  <g fill="#5BBDE0">
+    <ellipse cx="278" cy="53" rx="24" ry="15"/>
+    <ellipse cx="296" cy="43" rx="19" ry="14"/>
+    <ellipse cx="261" cy="50" rx="17" ry="12"/>
+    <ellipse cx="284" cy="39" rx="14" ry="11"/>
+  </g>
+
+  <!-- ── STYLISED "E" + AIRPLANE ── -->
+  <g fill="#5BBDE0">
+
+    <!-- Left spine of E — curved vertical backbone -->
+    <path d="
+      M 150 98
+      C 130 124, 118 158, 121 196
+      C 118 234, 130 268, 153 292
+      L 169 278
+      C 149 257, 140 226, 143 196
+      C 140 166, 150 136, 167 112
+      Z
+    "/>
+
+    <!-- TOP WING — upper bar of E sweeping right -->
+    <path d="
+      M 150 98
+      C 176 88, 222 80, 272 76
+      C 322 72, 364 74, 392 79
+      C 368 67, 320 63, 268 68
+      C 216 72, 170 83, 144 95
+      Z
+    "/>
+
+    <!-- MIDDLE BAR — thin connector to airplane -->
+    <path d="
+      M 140 190
+      C 163 185, 200 182, 246 181
+      C 282 180, 312 180, 330 182
+      L 330 193
+      C 312 191, 282 191, 246 192
+      C 200 193, 163 196, 140 201
+      Z
+    "/>
+
+    <!-- ── AIRPLANE ── -->
+    <!-- Fuselage -->
+    <ellipse cx="375" cy="187" rx="50" ry="10" transform="rotate(-2 375 187)"/>
+    <!-- Nose cone -->
+    <path d="M 416 182 C 434 183, 446 186, 448 187 C 446 188, 434 190, 416 191 Z"/>
+    <!-- Upper main wing -->
+    <path d="M 368 183 C 352 161, 332 147, 318 145 C 324 153, 336 166, 348 183 Z"/>
+    <!-- Lower main wing -->
+    <path d="M 368 191 C 352 213, 332 227, 318 229 C 324 221, 336 208, 348 191 Z"/>
+    <!-- Upper tail fin -->
+    <path d="M 336 183 C 328 171, 321 161, 323 155 C 329 160, 337 170, 340 183 Z"/>
+    <!-- Lower tail fin -->
+    <path d="M 336 191 C 328 203, 321 213, 323 219 C 329 214, 337 204, 340 191 Z"/>
+
+    <!-- BOTTOM WING — lower bar of E swooping right -->
+    <path d="
+      M 153 292
+      C 178 302, 214 312, 258 318
+      C 302 325, 344 327, 372 323
+      C 348 333, 301 333, 255 326
+      C 209 319, 173 308, 148 297
+      Z
+    "/>
+
+    <!-- TAIL CURL — bottom wing curves back up elegantly -->
+    <path d="
+      M 372 323
+      C 403 318, 428 305, 440 291
+      C 452 277, 448 260, 430 253
+      L 426 261
+      C 440 267, 443 280, 433 292
+      C 423 303, 399 315, 368 320
+      Z
+    "/>
+
+  </g>
+
+  <!-- ── TEXT: EXPLORE MY TRIP ── -->
+
+  <!-- "EXPL" -->
+  <text x="68" y="397"
+    font-family="'Arial Black', 'Arial Narrow', Arial, sans-serif"
+    font-weight="900" font-size="48" letter-spacing="5"
+    fill="#5BBDE0">EXPL</text>
+
+  <!-- Location PIN replacing "O" — centered at approx x=253 -->
+  <path d="
+    M 253 372
+    C 236 372, 223 385, 223 399
+    C 223 413, 236 425, 253 441
+    C 270 425, 283 413, 283 399
+    C 283 385, 270 372, 253 372
+    Z
+  " fill="#5BBDE0"/>
+  <circle cx="253" cy="399" r="10" fill="white"/>
+
+  <!-- "RE MY TRIP" -->
+  <text x="296" y="397"
+    font-family="'Arial Black', 'Arial Narrow', Arial, sans-serif"
+    font-weight="900" font-size="48" letter-spacing="5"
+    fill="#5BBDE0">RE MY TRIP</text>
+
+</svg>
